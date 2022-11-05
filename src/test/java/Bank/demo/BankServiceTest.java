@@ -1,0 +1,24 @@
+package Bank.demo;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.math.BigDecimal;
+import org.junit.jupiter.api.Test;
+
+public class BankServiceTest {
+
+  private BalanceRepository balanceRepository = new BalanceRepository();
+  private BankService bankService = new BankService(balanceRepository);
+
+  @Test
+  void getBalance() {
+    BigDecimal balance = bankService.getBalance(1L);
+    assertEquals(balance, BigDecimal.TEN);
+  }
+  @Test
+  void addMoney() {
+    BigDecimal balance = bankService.addMoney(1L,BigDecimal.ONE);
+    assertEquals(balance,BigDecimal.valueOf(11));
+
+  }
+}
